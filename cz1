@@ -1,0 +1,32 @@
+
+Dim ip As Integer
+Dim maska As Variant
+
+
+Function DecToBin$(ByVal n&)
+    Do
+        DecToBin = n Mod 2 & DecToBin
+        n = n \ 2
+    Loop While n
+End Function
+Function StringToBin(ByVal ip As String) As Double
+    Dim pos As Integer
+    ip = ip + "."
+    StringToBin = 0
+    While ip <> ""
+        pos = InStr(ip, ".")
+        StringToBin = StringToBin * 256 + Val(Left(ip, pos - 1))
+        ip = Mid(ip, pos + 1)
+    Wend
+End Function
+
+Sub Msg()
+    maska = InputBox("Wprowadz maske w postaci skróconej lub zwyklej", "Konwerter")
+    MsgBox DecToBin(StringToBin(maska))
+    
+End Sub
+
+
+
+  
+
